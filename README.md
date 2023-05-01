@@ -1,71 +1,67 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Code Challenge: Bot Battlr
 
-## Available Scripts
+Welcome to Bot Battlr, the one and only spot in the known universe where you can custom build your own Bot Army!
 
-In the project directory, you can run:
+Here's the scenario: a galactic overlord has hired you, a galactic web developer, to develop a galactic web app that will allow them to browse through a list of robots, view a robot's details, and, enlist a bot into their army.
 
-### `npm start`
+## Task
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+For this project, we are building out a React application that displays a list of available bots, among other features. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Core Deliverables
+As a user, I should be able to:
 
-### `npm test`
+1. See profiles of all bots rendered in BotCollection.
+2. Add an individual bot to my army by clicking on it. The selected bot should render in the YourBotArmy component. The bot can be enlisted only once. The bot does not disappear from the BotCollection.
+3. Release a bot from my army by clicking on it. The bot disappears from the YourBotArmy component.
+4. Discharge a bot from their service forever, by clicking the red button marked "x", which would delete the bot both from the backend and from the YourBotArmy on the frontend.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Endpoints for Core Deliverables
+GET /bots
+Example Response:
 
-### `npm run build`
+[
+  {
+    "id": 101,
+    "name": "wHz-93",
+    "health": 94,
+    "damage": 20,
+    "armor": 63,
+    "bot_class": "Support",
+    "catchphrase": "1010010101001101100011000111101",
+    "avatar_url": "https://robohash.org/nostrumrepellendustenetur.png?size=300x300&set=set1",
+    "created_at": "2018-10-02T19:55:10.800Z",
+    "updated_at": "2018-10-02T19:55:10.800Z"
+  },
+  {
+    "id": 102,
+    "name": "RyM-66",
+    "health": 86,
+    "damage": 36,
+    "armor": 77,
+    "bot_class": "Medic",
+    "catchphrase": "0110011100000100011110100110011000011001",
+    "avatar_url": "https://robohash.org/quidemconsequaturaut.png?size=300x300&set=set1",
+    "created_at": "2018-10-02T19:55:10.827Z",
+    "updated_at": "2018-10-02T19:55:10.827Z"
+  }
+]
+DELETE /bots/:id
+Example Response:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+{}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Advanced Deliverables
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+As a user, I should be able to:
 
-### `npm run eject`
+1. Choose if I want to enlist a bot into my army or just see their data. Clicking on the card should instead display a show view (BotSpecs) for that bot, which should replace BotsCollection. BotSpecs should have two buttons: one to go back to the list view and another to enlist that bot. Your app could look like the following:
+Full demo
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# trial
+2. Sort bots by their health, damage or armor. For this, create a new component, SortBar.
+3. When I enlist a bot it will be removed from the BotCollection and added to YourBotArmy.
+4. Filter bots by their class. We can select a few filters at the same time.
+5. Sort bots by their health, damage or armor. For this, create a new component, SortBar.
+6. Only enlist one bot from each bot_class. The classes are ["Support", "Medic", "Assault", "Defender", "Captain", "Witch"].
+Rubric
