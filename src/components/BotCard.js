@@ -16,9 +16,7 @@ const BotCard = ({ bot, onEnlist }) => {
         <p>Class: {bot_class}</p>
         <p>Catchphrase: {catchphrase}</p>
       </div>
-      {/* <div className="bot-card-actions">
-        {onEnlist && <button onClick={() => onEnlist(bot)}>Enlist</button>}
-      </div> */}
+      
     </div>
   );
 }

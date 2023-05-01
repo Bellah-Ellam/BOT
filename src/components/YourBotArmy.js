@@ -12,24 +12,36 @@ function YourBotArmy({ army, removeFromArmy }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(bot),
-    }).then(() => {
-      removeFromArmy(bot);
-    });
+    //   body: JSON.stringify(bot),
+    // }).then(() => {
+    //   removeFromArmy(bot);
+    // });
+    }
+    );
   };
-
   return (
     <div className="bot-army">
       <h2>Your Bot Army</h2>
       <div className="card-container">
         {army.map((bot) => (
-          <BotCard
-            key={bot.id}
-            bot={bot}
-            onRelease={() => releaseBot(bot)}
-            buttonText="Release"
-            deleteBot={() => deleteBot(bot)}
-          />
+          <div className="army-card" key={bot.id}>
+          <img src={bot.avatar_url} onClick = {() => releaseBot(bot)}/>
+          <p>Health: {bot.health}</p>
+          <p>Damage: {bot.damage}</p>
+          <p>Armor: {bot.armor}</p>
+          <p>Class: {bot.bot_class}</p>
+          <p>Catchphrase: {bot.catchphrase}</p>
+
+
+          </div>
+      
+          // <BotCard
+          //   key={bot.id}
+          //   bot={bot}
+          //   onClick={() => releaseBot(bot)}
+          //   buttonText="Release"
+          //   deleteBot={() => deleteBot(bot)}
+          // />
         ))}
       </div>
     </div>
