@@ -32,16 +32,24 @@ code {
   border: solid 1px black;
 
 }
-.army-card {
+
+h2{
+ font-weight: bold;
+ text-align: center;
+ font-size: 40px;
+}
+.bot-card {
   border: solid 1px black;
-  /* width: 20%;
-    display: flex;
-  flex-direction:column; */
+width: 20%;
+ background-color:lightgrey;
+ border-radius: 5px;
+ margin-bottom: 25px;
+ overflow-wrap: break-word;
 }
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .card-container.horizontal {
