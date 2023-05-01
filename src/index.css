@@ -17,6 +17,18 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+}
+.bot-card{
+  border: solid 1px black;
+  padding: 5px;
+  /* margin: auto; */
+  margin-top: 10px;
+ 
+}
+.bot-army{
+  background-color: chartreuse;
+  height: 70vh;
 }
 
 .card-container {

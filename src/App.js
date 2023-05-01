@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import BotCollection from "./components/BotCollection.js";
 import YourBotArmy from "./components/YourBotArmy.js";
+import "./index.css"
 
 function App() {
   const [army, setArmy] = useState([]);
 
   const addToArmy = (bot) => {
-    if (!army.includes(bot)) {
+    if (!army.find((b) => b.id === bot.id)) {
       setArmy([...army, bot]);
     }
   };
@@ -18,8 +19,8 @@ function App() {
 
   return (
     <div className="App">
-      <BotCollection addToArmy={addToArmy} />
       <YourBotArmy army={army} removeFromArmy={removeFromArmy} />
+      <BotCollection addToArmy={addToArmy} army={army} />
     </div>
   );
 }

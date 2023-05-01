@@ -1,16 +1,9 @@
 import React from "react";
 import BotCard from "./BotCard";
 
-function YourBotArmy({ army = [], setArmy }) {
+function YourBotArmy({ army, removeFromArmy }) {
   const releaseBot = (bot) => {
-    const newArmy = army.filter((b) => b !== bot);
-    setArmy(newArmy);
-  };
-
-  const enlistBot = (bot) => {
-    if (!army.includes(bot)) {
-      setArmy([...army, bot]);
-    }
+    removeFromArmy(bot);
   };
 
   const deleteBot = (bot) => {
@@ -21,36 +14,21 @@ function YourBotArmy({ army = [], setArmy }) {
       },
       body: JSON.stringify(bot),
     }).then(() => {
-      const newArmy = army.filter((b) => b !== bot);
-      setArmy(newArmy);
+      removeFromArmy(bot);
     });
   };
 
-  const allBots = BotCard.all || [];
-
   return (
-    <div className="bot-collection">
+    <div className="bot-army">
       <h2>Your Bot Army</h2>
       <div className="card-container">
         {army.map((bot) => (
           <BotCard
             key={bot.id}
             bot={bot}
-            handleClick={() => releaseBot(bot)}
+            onRelease={() => releaseBot(bot)}
             buttonText="Release"
             deleteBot={() => deleteBot(bot)}
-          />
-        ))}
-      </div>
-      <hr />
-      <h2>Bot Collection</h2>
-      <div className="card-container horizontal">
-        {allBots.map((bot) => (
-          <BotCard
-            key={bot.id}
-            bot={bot}
-            handleClick={() => enlistBot(bot)}
-            buttonText="Enlist"
           />
         ))}
       </div>

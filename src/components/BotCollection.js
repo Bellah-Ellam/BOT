@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import BotCard from "./BotCard";
 
-function BotCollection({ army, setArmy }) {
+function BotCollection({ addToArmy, army }) {
   const [bots, setBots] = useState([]);
 
   useEffect(() => {
@@ -10,9 +10,9 @@ function BotCollection({ army, setArmy }) {
       .then((data) => setBots(data));
   }, []);
 
-  const addBotToArmy = (bot) => {
-    if (!army.includes(bot)) {
-      setArmy([...army, bot]);
+  const enlistBot = (bot) => {
+    if (!army.find((b) => b.id === bot.id)) {
+      addToArmy(bot);
     }
   };
 
@@ -24,8 +24,9 @@ function BotCollection({ army, setArmy }) {
           <BotCard
             key={bot.id}
             bot={bot}
-            handleClick={() => addBotToArmy(bot)}
+            onEnlist={() => enlistBot(bot)}
             buttonText="Enlist"
+            disabled={army.find((b) => b.id === bot.id)}
           />
         ))}
       </div>
