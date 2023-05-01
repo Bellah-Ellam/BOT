@@ -4,6 +4,7 @@ const BotCard = ({ bot, onEnlist, removeFromArmy, deleteBot }) => {
   const { id, name, health, damage, armor, bot_class, catchphrase, avatar_url } = bot;
 
   function deleteBot(bot) {
+   
     fetch(`http://localhost:8001/bots/${bot.id}`, {
       method: "DELETE",
       headers: {
@@ -21,9 +22,7 @@ const BotCard = ({ bot, onEnlist, removeFromArmy, deleteBot }) => {
         <h3>{name}</h3>
       </div>
       <div className="bot-card-details">
-        {/* <p><i class="heartbeat icon"></i> {health}</p>
-        <p><i class="icon lightning"></i> {damage}</p>
-        <p><i class="shield alternate icon"></i> {armor}</p> */}
+        
         <p>Class: {bot_class}</p>
         <p>Catchphrase: {catchphrase}</p>
       </div>
